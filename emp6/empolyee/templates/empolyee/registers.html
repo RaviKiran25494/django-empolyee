@@ -1,0 +1,81 @@
+{% extends 'empolyee/test.html' %}
+
+
+{% block body %}
+
+
+
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-sm-1" style="background-color:lavender;"></div>
+    <!-- <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
+  <div class="col-sm-10" style="background-color:lavender;">
+    <div class="form-group">
+   
+    <center><h1>Register</h1></center></div>
+<div class="container">
+  	<div class="row">
+  		<div class="col-md-8 col-md-offset-2 col-md-offset-right-2">
+		<form  action="create" method="POST">
+			{% csrf_token %}
+	        <!-- {{form.as_p}} -->
+			
+			<div class="form-group">
+				<label for="Name">Name:</label>
+				<input type="text" name='name'  placeholder="Enter name"   class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_father_mother_name">Father_Mother_Name:</label>
+				<input type="text" name='em_father_mother_name' placeholder="Enter Father_Mother_Name"    class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_dob">DOB:</label>
+				<input type="date" name='em_dob'  placeholder="Enter DOB"    class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_address">Address:</label>
+				<input type="text" name='em_address' placeholder="Enter Address"    class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_aadher_number">Aadher_no:</label>
+				<input type="text" name='em_aadher_number' placeholder="Enter Aadher_no"   class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_mobile">Mobile:</label>
+				<input type="text" name='em_mobile' placeholder="Enter Mobile" class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_email">Email:</label>
+				<input type="email" name='em_email'  placeholder="Enter Email" class="form-control" required="required">
+			</div>
+			<div class="form-group">
+				<label for="em_alternate_no">Alternate_No:</label>
+				<input type="text" name='em_alternate_no'  placeholder="Enter Alternate_No" placeholder="Father_Mother_Name" class="form-control" required="required">
+			</div>
+			<div class="form-group">
+                <label for="em_type">Type:</label>
+                <select name='em_type' class="form-control" value="Default">
+                  <option value="Default1">Default</option>
+                  <option value="fulltime">fulltime</option>
+                  <option value="Parttime">Parttime</option>
+                  <option value="intends">intends</option>
+                </select>
+            </div>
+			<br><br>
+			
+			<div class="button-group" style="text-align: center;">
+				<button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+			</div>			
+		</form>
+		</div>
+	</div>
+ </div>
+ </div>
+   <div class="col-sm-1" style="background-color:lavender;"></div>
+   </div>
+</div>
+
+{% endblock %}
+

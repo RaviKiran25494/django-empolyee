@@ -1,0 +1,103 @@
+{% extends 'empolyee/test.html' %}
+
+
+{% block body %}
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-sm-1" style="background-color:lavender;"></div>
+    <!-- <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
+  <div class="col-sm-10" style="background-color:lavender;">
+    <div class="form-group">
+       <style>
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width:5px;
+}
+</style>
+    <center><h1>Indens</h1></center></div>
+    <center><table style="width:80%">
+  <tr>
+    <td name='id'><center>ID</center></td>
+    <td><center>{{ registers.id }}</center></td>
+  </tr><tr>
+    <th><center>NAME</center></th>
+    <td name='Name'><center>{{ registers.em_name }}</center></td>
+  </tr><tr>
+    <th><center>father/mothername</center></th><td  name='Father_Mother_Name'><center>{{ registers.em_father_mother_name }}</center></td> 
+  </tr><tr>
+    <th><center>DOB</center></th>
+    <td name='Date_Brith'><center>{{ registers.em_dob }}</center></td>
+  </tr><tr>
+    <th><center>Address</center></th>
+    <td name='Address'><center>{{ registers.em_address }}</center></td>
+  </tr><tr>
+    <th><center>Aadher_number</center></th>
+    <td name='Aadhar_number'><center>{{ registers.em_aadher_number }}</center></td>
+  </tr><tr>
+    <th><center>Phone_number</center></th>
+    <td name='Phone_number'><center>{{ registers.em_mobile }}</center></td>
+  </tr><tr>
+    <th><center>&nbsp;&nbsp; &nbsp;Email_id&nbsp;&nbsp;&nbsp;</center></th>
+    <td  name='Email_id'><center>{{ registers.em_email }}</center></td>
+  </tr><tr>
+    <th><center>Alternate_no</center></th>
+    <td name='Alternate_no'><center>{{ registers.em_alternate_no }}</center></td>
+  </tr><tr>
+    <th><center>Type</center></th>
+    <td name='Type'><center>{{ registers.em_type }}</center></td>
+  </tr></table></center>
+    
+ 
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-10 col-md-offset-1 col-md-offset-right-1">
+    <form action="join" method='post'>
+    {% csrf_token %}
+      <div class="form-group">
+        <label for="Id">Id:</label>
+        <input type="text" name='idel' value="{{ registers.id }}" placeholder="Enter Id" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="Date_Of_Joining">Date_Of_Joining:</label>
+        <input type="date" name='DOB'  placeholder="Date_Of_Joining" class="form-control">
+      </div>
+      <div class="form-group" style="padding-bottom: 10px;">
+        <label for="Department">Department:</label>
+        <input type="text" name='Department'  placeholder="Enter Department" class="form-control">
+      </div>
+      <div class="form-group" style="padding-bottom: 10px;">
+        <label for="Post">Post:</label>
+        <select class="form-control" name="sel">
+          <option value="volvo">Executive</option>
+          <option value="saab">Manager</option>
+          <option value="mercedes">HR</option>
+          <option value="audi">Developer</option>
+        </select>
+        <!-- <input type="text" name='Department'  placeholder="Enter Department" class="form-control"> -->
+      </div>
+      <div class="form-group" style="padding-bottom: 10px;">
+        <label for="Payrole">Payrole:</label>
+        <input type="text" name='Payrole'  placeholder="Enter your Payrole" class="form-control">
+      </div>
+      <div class="form-group" style="padding-bottom: 10px;">
+        <label for="Remarks">Remarks:</label>
+        <input type="text" name='Remarks'  placeholder="Enter Remarks" class="form-control">
+      </div>
+      <div class="button-group" style="text-align: center;">
+        <input type="submit" name='submit' value='Submit' class="btn btn-success" style="padding: 10px 70px 10px 70px"> 
+      </div>    
+    </form>
+    </div>
+  </div>
+ </div>
+ </div>
+   <div class="col-sm-1" style="background-color:lavender;"></div>
+   </div>
+</div>
+
+
+{% endblock %}

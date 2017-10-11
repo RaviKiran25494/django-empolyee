@@ -1,0 +1,39 @@
+{% extends 'empolyee/test.html' %}
+
+
+{% block body %}
+<style>
+table, th, td {
+    border: 2px solid black;
+    border-collapse: collapse;
+    width:10px;
+}
+</style>
+
+<center><table style="width:70%">
+  <tr>
+    <th><center>ID</center></th>
+    <th><center>NAME</center></th>
+    <th><center>Mobile</center></th>
+    <th><center>Email</center></th>
+    <th><center>DOB</center></th>
+    <th><center>Father_mother_name</center></th>
+    <th><center>Address</center></th>
+    <th><center>Alternate_no</center></th>
+    <th><center>Type</center></th>
+    
+  </tr>  
+  <tr>
+    <td><center>{{registers.id}}</center></td>
+    <td><center>{{registers.em_name}}</center></td>
+    <td><center>{{registers.em_mobile}}</center></td>  
+    <td><center>{{registers.em_email}}</center></td>
+    <td><center>{{registers.em_dob}}</center></td>
+    <td><center>{{registers.em_father_mother_name}}</center></td>
+    <td><center>{{registers.em_address}}</center></td>
+    <td><center>{{registers.em_alternate_no}}</center></td>
+    <td><center>{{registers.em_type}}</center></td>
+  </tr>
+</table></center>
+
+{% endblock %} 

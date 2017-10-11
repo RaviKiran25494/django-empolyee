@@ -1,0 +1,88 @@
+{% extends 'leads/test.html' %}
+
+
+{% block body %}
+  <div class="container-fluid">
+ 
+ <div class="row">
+   <div class="col-sm-1" style="background-color:lavender;"></div>
+   <!-- <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+   <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
+ <div class="col-sm-10" style="background-color:lavender;">
+   <div class="form-group">
+ 
+   <center><h1>Register</h1></center></div>
+<div class="container">
+     <div class="row">
+         <div class="col-md-8 col-md-offset-2 col-md-offset-right-2">
+        <form  action="create" method="POST">
+            {% csrf_token %}
+            <!-- {{form.as_p}} -->
+            
+            <div class="form-group">
+                <label for="Name">Name:</label>
+                <input type="text" name='name'  placeholder="Enter name"   class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label for="Mobile No">Mobile No:</label>
+                <input type="text" name='mobile' placeholder="Enter Mobile No"    class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label for="Email">Email:</label>
+                <input type="email" name='email'  placeholder="Enter Email Id"    class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label for="Course">Course:</label>
+                <select name='course' class="form-control" value="Default">
+                  <option value="Default1">Default</option>
+                {% for courses in all_courses %}
+                    <option value="{{courses.course}}">{{courses.course}}</option>
+                {% endfor %}
+                </select>
+                
+            </div>
+            <div class="form-group">
+                <label for="Source">Source:</label>
+                <select name='source' class="form-control" value="">
+                  <option value="Default1">Default</option>
+                  <option value="Website">Website</option>
+                  <option value="Sulekha">Sulekha</option>
+                  <option value="Socialnetwork">Socialnetwork</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Lead Status">Lead-status:</label>
+                <select name='demo_call' class="form-control" value="">
+                  <option value="Default1">Default</option>
+                  <option value="Demo">Demo</option>
+                  <option value="Callback">Callback</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="Demo Date">Demo Date:</label>
+                <input type="date" name='demo_date'  placeholder="Enter Demo Date" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label for="Counsler">Counsler:</label>
+                <input type="text" name='counsler'  placeholder="Enter Counsler Name" placeholder="Father_Mother_Name" class="form-control" required="required">
+            </div>
+            <div class="form-group">
+                <label for="Remarks">Remarks:</label>
+                <input type="text" name='remarks' placeholder="Enter remarks" class="form-control" >
+            </div><br><br>
+            
+            <div class="button-group" style="text-align: center;">
+                <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
+            </div>            
+        </form>
+        </div>
+    </div>
+</div>
+</div>
+  <div class="col-sm-1" style="background-color:lavender;"></div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% endblock %}
