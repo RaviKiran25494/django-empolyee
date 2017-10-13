@@ -10,8 +10,9 @@
   <div class="col-sm-6" style="background-color:lavender;">
     <div class="form-group">
     <br><br>
-   <center><h1>Login</h1></center>
-   <form method="POST" action="">
+   <center><h1>Empolyee-Login</h1></center>
+   <form method="POST" action="loginnet">
+   {% csrf_token %}
        <div class="form-group">
            <label>Username</label>
            <input type="text" class="form-control" name="username">

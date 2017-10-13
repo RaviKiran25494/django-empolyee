@@ -15,6 +15,8 @@ def index(request):
 	'registers':registers,
 	}
 	return render(request,'empolyee/index.html',context)
+def home(request):
+	return render(request,'empolyee/home.html')
 
 
 def detail(request,register_id):
@@ -48,6 +50,7 @@ def create1(request):
 			else:
 				return render(request,'empolyee/index.html')
 def join(request):
+
 	id1=request.POST['idel']
 	print(id1)
 	registers = Registers.objects.get(pk=id1)
@@ -79,17 +82,104 @@ def signup1(request):
 				if (registers.email==request.POST['em_email']):
 					users = Users(name =request.POST['name'],email =request.POST['em_email'],username=request.POST['username'],password=request.POST['password'])
 					users.save()
-					return render(request,'empolyee/login.html')
+					return render(request,'empolyee/index.html')
 	else:
 		return render(request,'empolyee/signup.html')
 
-  #   users = Users(name =request.POST['name'],email =request.POST['em_email'],username=request.POST['username'],password=request.POST['password'])
-  #   users.save()
-    # return redirect('/empolyee/login.html')
-
 def login(request):
 	return render(request,'empolyee/login.html')
+def login1(request):
+	users = Users.objects.all()
+	for users in users:
+		a=users.username
+		b=users.password
+		username=request.POST['username']
+		password=request.POST['password']
+		if(users.username==request.POST['username']):
+			id1=users.id
+			users = Users.objects.get(pk=id1)
+			a=users.username
+			b=users.password
+			if(a==request.POST['username'] and b==request.POST['password']):
+				print("hiiiii")
+				return render(request,'empolyee/home.html',{"users":users})
+	else:
+		return render(request,'empolyee/login.html')
+def logout():
+    session.clear()
+    flash('You are now logged out','success')
+    return render(request,'empolyee/login.html')
 
+#leavestatus
+def leavestatus(request):
+	return render(request,'empolyee/leave.html')
+
+#admin login-------------------------------------------------------------------
+def signupa(request):
+	return render(request,'empolyee/signupa.html')
+def signupa1(request):
+	admins = Admins(name =request.POST['name'],email =request.POST['em_email'],username=request.POST['username'],password=request.POST['password'])
+	admins.save()
+	return render(request,'empolyee/loginA.html')
+
+def logina(request):
+	return render(request,'empolyee/loginA.html')
+def logina1(request):
+	admins = Admins.objects.all()
+	for users in admins:
+		a=users.username
+		b=users.password
+		username=request.POST['username']
+		password=request.POST['password']
+		if(users.username==request.POST['username']):
+			id1=users.id
+			users = Admins.objects.get(pk=id1)
+			a=users.username
+			b=users.password
+			if(a==request.POST['username'] and b==request.POST['password']):
+				print("hiiiii")
+				return render(request,'empolyee/home1.html',{"users":users})
+#------------------------------------------------------------------------------
+def loginnet(request):
+    if request.method != 'POST':
+        raise Http404('Only POSTs are allowed')
+    try:
+        m = Users.objects.get(username=request.POST['username'])
+        if m.password == request.POST['password']:
+            request.session['username'] = m.username
+            return render(request,'empolyee/home.html')
+    except Member.DoesNotExist:
+        return HttpResponse("Your username and password didn't match.")
+def logoutnet(request):
+    try:
+        del request.session['username']
+    except KeyError:
+        pass
+    return HttpResponse("You're logged out.")
+#--------------------------------------------------------------------------------
+#empolyee details
+def empdetails(request):
+	employees = Employees.objects.all()
+	context={
+	'employees':employees,
+	}
+	return render(request,'empolyee/employeedetailsA.html',context)
+
+#payments
+def payments(request):
+	return render(request,'empolyee/payment.html')
+def payments1(request):
+	payments = Payments(emp_id =request.POST['empid'],name =request.POST['name'],department =request.POST['department'],mounth=request.POST['mounth'],leaves_no_days=request.POST['leaves_no_days'],actual_ctc=request.POST['actual_ctc'],payble_ctc=request.POST['payble_ctc'])
+	payments.save()
+	return render(request,'empolyee/index.html')
+#leaveapprioved
+def leaveapprioved(request):
+	leaves = Leaves.objects.all()
+	return render(request,'empolyee/leave1.html',{ "leaves":leaves })
+
+
+
+#----------------------------------
 def next(request):
 	registers = Registers.objects.get(pk=register_id)
 	context={

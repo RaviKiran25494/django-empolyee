@@ -15,4 +15,20 @@ urlpatterns = [
     url(r'^signup/$',views.signup,name='signup'),
     url(r'^signup/signup1$',views.signup1,name='signup1'),
     url(r'^login/$',views.login,name='login'),
+    url(r'^login/loginnet$',views.loginnet,name='loginnet'),
+
+    #loginadmin
+    url(r'^signupa/$',views.signupa,name='signupa'),
+    url(r'^signupa/signupa1$',views.signupa1,name='signupa1'),
+    url(r'^logina/$',views.logina,name='logina'),
+    url(r'^logina/logina1$',views.logina1,name='logina1'),
+    url(r'^empdetails/$',views.empdetails,name='empdetails'),
+    url(r'^payments/$',views.payments,name='payments'),
+    url(r'^payments/payment1$',views.payments1,name='payments1'),
+    url(r'^leaveapprioved/$',views.leaveapprioved,name='leaveapprioved'),
+
+
+    
+    url(r'^home/$',views.home,name='home'),
+    url(r'^logout/$',views.logout,name='logout'),
 ]

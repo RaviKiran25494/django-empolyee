@@ -1,47 +1,54 @@
-{% extends 'layout1.html' %}
+{% extends 'empolyee/test.html' %}
+
 {% block body %}
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-sm-3" style="background-color:lavender;"></div>
+    <!-- <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
+    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
+  <div class="col-sm-6" style="background-color:lavender;">
+    <div class="form-group">
     <br><br>
-
-  <!-- {{form.name}} -->
- <div class="container-fluid">
- 
- <div class="row">
-   <div class="col-sm-3" style="background-color:lavender;"></div>
- <div class="col-sm-6" style="background-color:lavender;">
- <div class="form-group">
-   <center><h1>Leaves Page</h1></center>
- </div>
-
- {% from "includes/_formhelper.html" import render_field %}
- <form method="POST" action="#">
-     <div class="form-group">
-       {{render_field(form.empid, class_="form-control")}}
-     </div>
-     <div class="form-group">
-       {{render_field(form.empname, class_="form-control")}}
-     </div>
-     <div class="form-group">
-       {{render_field(form.department, class_="form-control")}}
-     </div>
-     <div class="form-group">
-       {{render_field(form.leavefrom, class_="form-control")}}
-     </div>
-     <div class="form-group">
-       {{render_field(form.leaveto, class_="form-control")}}
-     </div>
-     <div class="form-group">
-       {{render_field(form.Number_of_days, class_="form-control")}}
-     </div>
-     <div class="form-group">
-           {{render_field(form.Reason, class_="form-control")}}
+   <center><h1>Leave</h1></center>
+   <form method="POST" action="">
+   {% csrf_token %}
+      <div class="form-group">
+           <label>Emp_id</label>
+           <input type="text" class="form-control" name="empid">
        </div>
-     <p>
-       <input type="submit" class="btn btn-primary" value="Submit">
-     </p>
- </form>
+       <div class="form-group">
+           <label>Name</label>
+           <input type="text" class="form-control" name="name">
+       </div>
+       <div class="form-group">
+           <label>Department</label>
+           <input type="department"  class="form-control" name="department">
+       </div>
+       <div class="form-group">
+           <label>Mounth</label>
+           <input type="mounth"  class="form-control" name="mounth">
+       </div>
+       <div class="form-group">
+           <label>Leaves_no_days</label>
+           <input type="leaves_no_days"  class="form-control" name="leaves_no_days">
+       </div>
+       <div class="form-group">
+           <label>Actual_ctc</label>
+           <input type="actual_ctc"  class="form-control" name="actual_ctc">
+       </div>
+       <div class="form-group">
+           <label>Payble_ctc</label>
+           <input type="payble_ctc"  class="form-control" name="payble_ctc">
+       </div>
+       
+       <center><button type="submit" class="btn btn-primary">Submit</button></center><br><br>
+       
+   </form>
  </div>
- <div class="col-sm-3" style="background-color:lavender;"></div>
- </div>
+   <div class="col-sm-3" style="background-color:lavender;"></div>
+   </div>
 </div>
+
 
 {% endblock %}
