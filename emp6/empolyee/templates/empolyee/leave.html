@@ -11,35 +11,35 @@
     <div class="form-group">
     <br><br>
    <center><h1>Leave</h1></center>
-   <form method="POST" action="">
+   <form method="POST" action="leave1">
    {% csrf_token %}
       <div class="form-group">
-           <label>Emp_id</label>
+           <label>Emp_id:</label>
            <input type="text" class="form-control" name="empid">
        </div>
        <div class="form-group">
-           <label>Name</label>
+           <label>Name:</label>
            <input type="text" class="form-control" name="name">
        </div>
        <div class="form-group">
-           <label>Department</label>
+           <label>Department:</label>
            <input type="department"  class="form-control" name="department">
        </div>
        <div class="form-group">
-           <label>Mounth</label>
-           <input type="mounth"  class="form-control" name="mounth">
+           <label>Leave From:</label>
+           <input type="date"  class="form-control" name="leavefrom">
        </div>
        <div class="form-group">
-           <label>Leaves_no_days</label>
-           <input type="leaves_no_days"  class="form-control" name="leaves_no_days">
+           <label>Leaves_To:</label>
+           <input type="date"  class="form-control" name="leaveto">
        </div>
        <div class="form-group">
-           <label>Actual_ctc</label>
-           <input type="actual_ctc"  class="form-control" name="actual_ctc">
+           <label>Number Of Days:</label>
+           <input type="text"  class="form-control" name="numberofdays">
        </div>
        <div class="form-group">
-           <label>Payble_ctc</label>
-           <input type="payble_ctc"  class="form-control" name="payble_ctc">
+           <label>Reason</label>
+           <input type="text"  class="form-control" name="reason">
        </div>
        
        <center><button type="submit" class="btn btn-primary">Submit</button></center><br><br>

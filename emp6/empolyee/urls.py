@@ -16,6 +16,9 @@ urlpatterns = [
     url(r'^signup/signup1$',views.signup1,name='signup1'),
     url(r'^login/$',views.login,name='login'),
     url(r'^login/loginnet$',views.loginnet,name='loginnet'),
+    #leavestatus
+    url(r'^leave/$',views.leave,name='leave'),
+    url(r'^leave/leave1$',views.leave1,name='leave1'),
 
     #loginadmin
     url(r'^signupa/$',views.signupa,name='signupa'),

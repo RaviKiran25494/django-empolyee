@@ -33,14 +33,14 @@ table, th, td {
   </tr>  
   {% for x in leaves%}
   <tr>
-    <td><center>{{ x.emp_id }}</center></td>
-    <td><center>{{ x.emp_id }}</center></td>
-    <td><center>{{ x.emp_id }}</center></td>  
-    <td><center>{{ x.emp_id }}</center></td>
-    <td><center>{{ x.emp_id }}</center></td>
-    <td><center>{{ x.emp_id }}</center></td>
-    <td><center>{{ x.emp_id }}</center></td>
-    <th><center><button><a class="btn btn-success" href="/Approvel?id={{ x.emp_id }}">Approvel</a></button></center></th><th><center><button><a class="btn btn-danger" href="/cancel?id={{ x.emp_id }}">Cancel</a></button></center></th>
+    <td><center>{{ x.em_id }}</center></td>
+    <td><center>{{ x.em_name }}</center></td>
+    <td><center>{{ x.department }}</center></td>  
+    <td><center>{{ x.leave_from }}</center></td>
+    <td><center>{{ x.leave_to }}</center></td>
+    <td><center>{{ x.no_days }}</center></td>
+    <td><center>{{ x.reason }}</center></td>
+    <th><center><button><a class="btn btn-success" href="/Approvel?id={{ x.em_id }}">Approvel</a></button></center></th><th><center><button><a class="btn btn-danger" href="/cancel?id={{ x.em_id }}">Cancel</a></button></center></th>
   {% endfor %}
 </table></center>
 

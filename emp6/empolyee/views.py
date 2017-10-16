@@ -111,8 +111,12 @@ def logout():
     return render(request,'empolyee/login.html')
 
 #leavestatus
-def leavestatus(request):
+def leave(request):
 	return render(request,'empolyee/leave.html')
+def leave1(request):
+	leaves = Leaves(em_id =request.POST['empid'],em_name =request.POST['name'],department =request.POST['department'],leave_from=request.POST['leavefrom'],leave_to=request.POST['leaveto'],no_days=request.POST['numberofdays'],reason=request.POST['reason'])
+	leaves.save()
+	return render(request,'empolyee/index.html')
 
 #admin login-------------------------------------------------------------------
 def signupa(request):
@@ -169,14 +173,31 @@ def empdetails(request):
 def payments(request):
 	return render(request,'empolyee/payment.html')
 def payments1(request):
-	payments = Payments(emp_id =request.POST['empid'],name =request.POST['name'],department =request.POST['department'],mounth=request.POST['mounth'],leaves_no_days=request.POST['leaves_no_days'],actual_ctc=request.POST['actual_ctc'],payble_ctc=request.POST['payble_ctc'])
+	payments = Payments(emp_id = request.POST['empid'],name = request.POST['name'],department = request.POST['department'],mounth= request.POST['mounth'],leaves_no_days= request.POST['leaves_no_days'],actual_ctc= request.POST['actual_ctc'],payble_ctc= request.POST['payble_ctc'])
 	payments.save()
 	return render(request,'empolyee/index.html')
 #leaveapprioved
 def leaveapprioved(request):
 	leaves = Leaves.objects.all()
-	return render(request,'empolyee/leave1.html',{ "leaves":leaves })
+	context={
+	'leaves':leaves,
+	}
+	for leaves in leaves:
+		if leaves.status=="none":
+			a=leaves.em_id
+			leaves1 = Leaves.objects.get(status="none")
+			context1={
+			"leaves1":leaves1
+			}
+			print(leaves1)
+	return render(request,'empolyee/leave1.html',context)
+#apprioved1
 
+def apprioved1(request, id):
+    leaves = Leaves.objects.get(id=id)
+    leaves.status = Apprioved
+    leaves.save()
+    return redirect('/emolyee/leaveapprioved/')
 
 
 #----------------------------------
