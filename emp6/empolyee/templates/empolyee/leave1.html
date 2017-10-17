@@ -27,20 +27,30 @@ table, th, td {
     <th><center>Leave_form</center></th>
     <th><center>Leave_To</center></th>
     <th><center>Number_of_days</center></th>
-    <th><center>Reason</center></th>  
+    <th><center>Reason</center></th>
+    <td><center>Status</center></td> 
     <th><center>Approvel</center></th>
     <th><center>Cancel</center></th>
   </tr>  
-  {% for x in leaves%}
-  <tr>
-    <td><center>{{ x.em_id }}</center></td>
-    <td><center>{{ x.em_name }}</center></td>
-    <td><center>{{ x.department }}</center></td>  
-    <td><center>{{ x.leave_from }}</center></td>
-    <td><center>{{ x.leave_to }}</center></td>
-    <td><center>{{ x.no_days }}</center></td>
-    <td><center>{{ x.reason }}</center></td>
-    <th><center><button><a class="btn btn-success" href="/Approvel?id={{ x.em_id }}">Approvel</a></button></center></th><th><center><button><a class="btn btn-danger" href="/cancel?id={{ x.em_id }}">Cancel</a></button></center></th>
+  {% for x in leaves %}
+  b={{ x }}
+  
+  
+      {% if b == none %}
+        <tr>
+          <td><center>{{ x.em_id }}</center></td>
+          <td><center>{{ x.em_name }}</center></td>
+          <td><center>{{ x.department }}</center></td>  
+          <td><center>{{ x.leave_from }}</center></td>
+          <td><center>{{ x.leave_to }}</center></td>
+          <td><center>{{ x.no_days }}</center></td>
+          <td><center>{{ x.reason }}</center></td>
+          <td><center>{{ x.status }}</center></td>
+          <th><center><button><a class="btn btn-success" href="/empolyee/apprioved1/{{ x.em_id }}">Approvel</a></button></center></th><th><center><button><a class="btn btn-danger" href="/empolyee/cancel1/{{ x.em_id }}">Cancel</a></button></center></th>
+          {% else %}
+          <p>their is no date</p>
+       {% endif %}
+
   {% endfor %}
 </table></center>
 

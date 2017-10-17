@@ -19,6 +19,8 @@ urlpatterns = [
     #leavestatus
     url(r'^leave/$',views.leave,name='leave'),
     url(r'^leave/leave1$',views.leave1,name='leave1'),
+    url(r'^apprioved1/(?P<id>\d+)$',views.apprioved1,name='apprioved1'),
+    url(r'^cancel1/(?P<id>\d+)$',views.cancel1,name='cancel1'),
 
     #loginadmin
     url(r'^signupa/$',views.signupa,name='signupa'),

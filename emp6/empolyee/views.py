@@ -182,22 +182,27 @@ def leaveapprioved(request):
 	context={
 	'leaves':leaves,
 	}
-	for leaves in leaves:
-		if leaves.status=="none":
-			a=leaves.em_id
-			leaves1 = Leaves.objects.get(status="none")
-			context1={
-			"leaves1":leaves1
-			}
-			print(leaves1)
+	# for leaves in leaves:
+	# 	if leaves.status=="none":
+	# 		a=leaves.em_id
+	# 		context1={
+	# 		"a":a
+	# 		}
+			# print(leaves,a)
 	return render(request,'empolyee/leave1.html',context)
 #apprioved1
 
 def apprioved1(request, id):
     leaves = Leaves.objects.get(id=id)
-    leaves.status = Apprioved
+    leaves.status = "Apprioved"
     leaves.save()
-    return redirect('/emolyee/leaveapprioved/')
+    return redirect('/empolyee/leaveapprioved')
+
+def cancel1(request, id):
+    leaves = Leaves.objects.get(id=id)
+    leaves.status = "Cancel"
+    leaves.save()
+    return redirect('/empolyee/leaveapprioved')
 
 
 #----------------------------------
