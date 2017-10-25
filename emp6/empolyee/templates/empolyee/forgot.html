@@ -1,41 +1,54 @@
-{% extends 'layout1.html' %}
+{% extends 'empolyee/test.html' %}
+
 
 {% block body %}
+
+
+
 <div class="container-fluid">
   
   <div class="row">
-    <div class="col-sm-3" style="background-color:lavender;"></div>
+    <div class="col-sm-1" style="background-color:lavender;"></div>
     <!-- <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
     <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
-  <div class="col-sm-6" style="background-color:lavender;">
+  <div class="col-sm-10" style="background-color:lavender;">
     <div class="form-group">
-  	<br><br>
-	
-   <center><h1>Updata-Password</h1></center></div>
-
-   <!-- {{form.name}} -->
-   {% from "includes/_formhelper.html" import render_field %}
-   <form method="POST" action="">
-        
-       <div class="form-group">
-           {{render_field(form.DOB, class_="form-control")}}
-       </div>
-       <div class="form-group">
-           {{render_field(form.email, class_="form-control")}}
-       </div>
-       <div class="form-group">
-           {{render_field(form.fathername, class_="form-control")}}
-       </div>
-       <div class="form-group">
-           {{render_field(form.password, class_="form-control")}}
-       </div>
-
-        <center><p><input type="submit" class="btn btn-primary" value="UPDATE"></p></center>
-   </form>
+   
+    <center><h1>Register</h1></center></div>
+<div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2 col-md-offset-right-2">
+    <form  action="forgot1" method="POST">
+      {% csrf_token %}
+      <div class="form-group">
+        <label for="em_father_mother_name">Father_Mother_Name:</label>
+        <input type="text" name='em_father_mother_name' placeholder="Enter Father_Mother_Name"    class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label for="em_dob">DOB:</label>
+        <input type="date" name='em_dob'  placeholder="Enter DOB"    class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label for="em_email">Email:</label>
+        <input type="email" name='em_email'  placeholder="Enter Email" class="form-control" required="required">
+      </div>
+      <div class="form-group">
+        <label for="Password">NewPassword:</label>
+        <input type="password" name='Password'  placeholder="Enter Password"   class="form-control" required="required">
+      </div>
+      <br><br>
+      
+      <div class="button-group" style="text-align: center;">
+        <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> Change</button>
+      </div>      
+    </form>
     </div>
-   <div class="col-sm-3" style="background-color:lavender;"></div>
+  </div>
+ </div>
+ </div>
+   <div class="col-sm-1" style="background-color:lavender;"></div>
    </div>
 </div>
 
-
 {% endblock %}
+

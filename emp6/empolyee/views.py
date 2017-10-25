@@ -2,7 +2,8 @@ from django.http import Http404
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect, get_object_or_404, HttpResponseRedirect, render_to_response
-
+from django.contrib.auth import authenticate
+from django.contrib.auth import login as auth_login
 
 from.models import Registers,Employees,Leaves,Payments,Users,Admins
 
@@ -117,6 +118,20 @@ def leave1(request):
 	leaves = Leaves(em_id =request.POST['empid'],em_name =request.POST['name'],department =request.POST['department'],leave_from=request.POST['leavefrom'],leave_to=request.POST['leaveto'],no_days=request.POST['numberofdays'],reason=request.POST['reason'])
 	leaves.save()
 	return render(request,'empolyee/index.html')
+# def leavestatus(request):
+# 	leaves = Leaves.objects.all()
+# 	context={
+# 	'leaves':leaves,
+# 	} 
+# 	print(leaves.em_name)
+# 	return render(request,'empolyee/leavestatus.html',context)
+def leavestatus(request):
+	employees = Leaves.objects.all()
+	context={
+	'employees':employees,
+	}
+	print(employees)
+	return render(request,'empolyee/leavestatus.html',context)
 
 #admin login-------------------------------------------------------------------
 def signupa(request):
@@ -167,7 +182,26 @@ def empdetails(request):
 	context={
 	'employees':employees,
 	}
+
 	return render(request,'empolyee/employeedetailsA.html',context)
+
+def empdetails1(request):
+	employees = Employees.objects.all()
+	context={
+	'employees':employees,
+	}
+
+	return render(request,'empolyee/employeedetails.html',context)
+
+def payslips(request):
+	employees = Employees.objects.all()
+	payments = Payments.objects.all()
+	context={
+	'payments':payments,
+	'employees':employees,
+	}
+
+	return render(request,'empolyee/payslip1.html',context)
 
 #payments
 def payments(request):
@@ -203,7 +237,26 @@ def cancel1(request, id):
     leaves.status = "Cancel"
     leaves.save()
     return redirect('/empolyee/leaveapprioved')
-
+def forgot(request):
+	return render(request,'empolyee/forgot.html')
+def forgot1(request):
+	a=request.POST['em_dob']
+	c=request.POST['em_email']
+	d=request.POST['Password']
+	b=request.POST['em_father_mother_name']
+	registers = Registers.objects.all()
+	for registers in registers:
+		if (b==registers.em_father_mother_name and a==registers.em_dob and c==registers.em_email):
+			f=registers.em_name
+			print(f)
+			# users = Users.objects.get(id=)
+		else:
+			print("fail")
+	print(c,d,a,b)
+	users = Users.objects.get(name=f)
+	users.password=d
+	users.save()
+	return render(request,'empolyee/forgot.html')
 
 #----------------------------------
 def next(request):
@@ -223,4 +276,16 @@ def next(request):
    	# employee = Empolyees(name =request.POST['name'],dob =request.POST['dob'],address=request.POST['em_dob'],mobile=request.POST['em_address'],email=request.POST['em_aadher_number'],alternate_no=request.POST['em_mobile'],date_join=request.POST['em_email'],post=request.POST['em_alternate_no'],type1=request.POST['em_type'],dep=request.POST['em_type'],remarks=request.POST['em_type'])
  #    employee.save()	
 
-
+def login123(request):
+   if request.method == 'POST':
+       username = request.POST['u']
+       password = request.POST['p']
+       user = authenticate(username=username, password=password)
+       if user is not None:
+           auth_login(request=request, user=user)
+           return render(request,'empolyee/test.html')
+       else:
+           msg_to_html = custom_message('Invalid Credentials', TagType.danger)
+           dictionary = dict(request=request, messages = msg_to_html)
+           dictionary.update(csrf(request))
+       return render_to_response('empolyee/testmain.html', dictionary)

@@ -1,4 +1,4 @@
-{% extends 'layout1.html' %}
+{% extends 'empolyee/test.html' %}
 
 {% block body %}
 <div class="container-fluid">
@@ -18,6 +18,15 @@ table, th, td {
     width:10px;
 }
 </style>
+<!-- {% if request.user.get_username %}
+        <h2 style="width: 50%"  id="header_menu"></h2>
+        <h1>{{ request.user.get_username }}</h1>
+        <br><br>
+        {% if request.user.groups.all.0 %}
+    <h1 align="center" id="header_menu"> Permissions: </h1>
+        {{ request.user.groups.all.0 }}
+        {% endif %}
+    {% endif %} -->
 
 <center><table style="width:70%">
   <tr>
@@ -31,18 +40,22 @@ table, th, td {
     <th><center>Status</center></th>
     
   </tr>  
-  {% for x in rv1%}
-  <tr>
-    <td><center>{{x['emp_id']}}</center></td>
-    <td><center>{{x['emp_name']}}</center></td>
-    <td><center>{{x['department']}}</center></td>  
-    <td><center>{{x['leave_form']}}</center></td>
-    <td><center>{{x['leave_to']}}</center></td>
-    <td><center>{{x['Number_of_days']}}</center></td>
-    <td><center>{{x['reason']}}</center></td>
-    <td><center>{{x['status']}}</center></td>
-    
+  
+    {% for employees in employees%}
+      {% if request.user.get_username == employees.em_name %}
+          <tr>
+            <td><center>{{employees.em_id}}</center></td>
+            <td><center>{{employees.em_name}}</center></td>
+            <td><center>{{employees.department}}</center></td>
+            <td><center>{{employees.leave_from}}</center></td>
+            <td><center>{{employees.leave_to}}</center></td>
+            <td><center>{{employees.no_days}}</center></td>
+            <td><center>{{employees.reason}}</center></td>
+            <td><center>{{employees.status}}</center></td>
+          </tr>  
+      {% endif %}
   {% endfor %}
+ 
 </table></center>
 
 <br><br>

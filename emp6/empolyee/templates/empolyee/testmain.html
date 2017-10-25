@@ -1,15 +1,23 @@
 <html>
-	<head>
-		<title>Lead-tracker</title>
+  <head>
+    <title>Lead-tracker</title>
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static 'leads/style.css' %}" />  
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+ <style>
+        h2 {
+            color: #7c795d;
+            font-family: 'Trocchi', serif;
+            font-size: 45px;
+            font-weight: normal;
+            line-height: 48px;
+            margin: 0;
+        }
+    </style>
 
 </head>
-<body>
  <nav class="navbar navbar-default">
       <div class="container">
         <div class="navbar-header">
@@ -31,21 +39,78 @@
             
             
           </ul>
+
           <ul class="nav navbar-nav navbar-right">
-            {% if session.logged_in %}
-              <li><a href="">request.session['username']</a></li>
-              <li><a href="/empolyee/logout">Logout</a></li>
-            {% else %}
-             <!--  <li><a href="/register">Register</a></li> -->
-              <li><a href="/empolyee/login">Login</a></li>
-            {% endif %}
-          </ul>
-          
-        </div>
-      </div>
-    </nav>	
+
+       <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+
+        </ul>
+        {% if request.user.get_username %}
+            <a title="Permission as: {{ request.user.groups.all.0 }}" class="navbar-brand"
+               >{{ request.user.get_username }}</a>
+        {% endif %}
+
+        {% if request.user.is_authenticated %}
+            <!-- <form class="form-inline my-2 my-lg-0">
+                csrf_token
+                <a href="#" style="color: white" class="btn btn-danger my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#support-modal">Tickets</a>
+            </form> &nbsp -->
+
+            <form action="{% url 'logout' %}" method="post" class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Logout</button>
+            </form>
+        {% else %}
+            <form class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+                <a style="color:white" href="#" class="btn btn-primary my-2 my-sm-0" role="button" data-toggle="modal"
+                   data-target="#login-modal">Login</a>
+            </form>
+        {% endif %}
+    </div>
+<div>
+    {% if messages %}
+        {% block messages %}
+            <div class="container-fluid" align="center">
+                <div class="{{ messages.tag }}" id="div_msg" align="center" role="alert"> {{ messages.message }}  </div>
+            </div>
+        {% endblock %}
+    {% endif %}
+</div>
+</ul></div></div></nav>   
+
+
 {% block body %}
 
 {% endblock %}
+
+</div>
+<div align="center" class="container" style="padding-top: 5%">
+    {% if request.user.get_username %}
+        <h2 style="width: 50%"  id="header_menu">WELCOME TO YOUR PAGE </h2>
+        <h1>{{ request.user.get_username }}</h1>
+        <br><br>
+        {% if request.user.groups.all.0 %}
+    <h1 align="center" id="header_menu"> Permissions: </h1>
+        {{ request.user.groups.all.0 }}
+        {% endif %}
+    {% endif %}
+    {% include "empolyee/log123.html" %}
+    {# include "utility/support.html"   #}
+
+    <nav class="navbar fixed-bottom navbar-light bg-faded">
+        <div class="container" align="center">
+            <span class="text-muted"> </span>
+        </div>
+    </nav>
+
+    <script type="text/javascript">
+        setTimeout(function () {
+            $('#div_msg').fadeOut('fast');
+        }, 5000);
+    </script>
+ 
 </body>
 </html>

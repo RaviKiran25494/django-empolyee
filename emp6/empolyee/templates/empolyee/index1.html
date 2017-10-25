@@ -1,0 +1,35 @@
+{% extends 'empolyee/testmain.html' %}
+
+
+{% block body %}
+<!--  {% if registers %}
+
+    <ul>
+      {% for registers in registers %}
+        <li><a href="/empolyee/{{ registers.id }}/">{{ registers.em_name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <h3>you don't have any albums</h3>
+  {% endif %}<br><br><br><br><br><br><br><br><br><br><br><br>
+  <center><h1><b style="color: red">WELCOME TO DIGITAL-LYNC</b></h1></center> -->
+
+
+  <center><h1>WELCOME TO DIGITAL-LYNC</h1></center></div>
+<div class="container-fluid">
+  
+  <div class="row">
+    <div class="col-sm-3" style="background-color:lavender;"></div>
+  <div class="col-sm-6" style="background-color:lavender;">
+    <div class="form-group">
+
+	<center><h1>login</h1></center></div>
+	
+	<center><button><a class="btn btn-success" href='/empolyee/login'>EMPOLYEE-LOGIN</a></button></center><br><br>
+	<center><button><a class="btn btn-success" href='/empolyee/logina'>&nbsp;&nbsp;&nbsp;ADMIN-LOGIN&nbsp;&nbsp;&nbsp;</a></button></center>
+<br><br>
+ </div>
+   <div class="col-sm-3" style="background-color:lavender;"></div>
+   </div>
+</div>
+{% endblock %}
