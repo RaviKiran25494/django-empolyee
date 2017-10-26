@@ -1,57 +1,57 @@
 {% extends 'empolyee/testn.html' %}
 
 
+
 {% block body %}
-
-
-
 <div class="container-fluid">
-  
-  <div class="row">
-    <div class="col-sm-1" style="background-color:lavender;"></div>
-    <!-- <div class="col-sm-4" style="background-color:lavenderblush;">.col-sm-4</div>
-    <div class="col-sm-4" style="background-color:lavender;">.col-sm-4</div> -->
-  <div class="col-sm-10" style="background-color:lavender;">
+
+   <div class="row">
+   <div class="col-sm-1" style="background-color:lavender;"></div>
+       <div class="col-sm-10" style="background-color:lavender;">
     <div class="form-group">
-   
-    <center><h1>Empolyee-signup</h1></center></div>
-<div class="container">
+    <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2 col-md-offset-right-2">
-    <form  action="signup1" method="POST">
-      {% csrf_token %}
-          <!-- {{form.as_p}} -->
-      
-      <div class="form-group">
-        <label for="Name">Name:</label>
-        <input type="text" name='name'  placeholder="Enter name"   class="form-control" required="required">
-      </div>
-      <div class="form-group">
-        <label for="em_email">Email:</label>
-        <input type="email" name='em_email'  placeholder="Enter Email" class="form-control" required="required">
-      </div>
-      <div class="form-group">
-        <label for="Username">Username:</label>
-        <input type="text" name='username'  placeholder="Enter username"    class="form-control" required="required">
-      </div>
-      <div class="form-group">
-        <label for="password">password:</label>
-        <input type="password" name='password'  placeholder="Enter password"    class="form-control" required="required">
-      </div>
-
-      <br><br>
-      
-      <div class="button-group" style="text-align: center;">
-        <button type="submit" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-plus"></span> ADD</button>
-      </div>      
-    </form>
-    </div>
-  </div>
- </div>
- </div>
+           <div class="panel panel-default">
+               <div class="panel-body">
+                   <h3>Register for an Account</h3>
+                   {% if error_message %}
+                       <p><strong>{{ error_message }}</strong></p>
+                   {% endif %}
+                   <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                       {% csrf_token %}
+                       {% for field in form %}
+                           <div class="form-group">
+                               <div class="col-sm-offset-2 col-sm-10">
+                                   <span class="text-danger small">{{ field.errors }}</span>
+                               </div>
+                               <label class="control-label col-sm-2" for="song_title">{{ field.label_tag }}</label>
+                               <div class="col-sm-10">{{ field }}</div>
+                           </div>
+                       {% endfor %}
+                       <div class="form-group">
+                           <div class="col-sm-offset-2 col-sm-10">
+                               <button type="submit" class="btn btn-success">Submit</button>
+                           </div>
+                       </div>
+                   </form>
+               </div>
+               </div>
+                </div>
+               </div>
+               </div>
    <div class="col-sm-1" style="background-color:lavender;"></div>
    </div>
 </div>
+               <!-- <div class="panel-footer">
+                   Already have an account? <a href="{% url 'index' %}">Click here</a> to log in.
+               </div> -->
+           </div>
+       </div>
+   </div>
+
+</div>
 
 {% endblock %}
+
 

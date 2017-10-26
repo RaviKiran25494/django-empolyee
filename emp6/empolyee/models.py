@@ -1,5 +1,8 @@
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User
+from django.db import models
+from django.core.urlresolvers import reverse
 class Registers(models.Model):
 	em_name = models.CharField(max_length=250)
 	em_father_mother_name = models.CharField(max_length=250)

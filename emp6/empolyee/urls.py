@@ -12,8 +12,8 @@ urlpatterns = [
     url(r'^registers1/join$',views.join,name='join'),
     url(r'^reg1/create$',views.create,name='create'),
     #login
-    url(r'^signup/$',views.signup,name='signup'),
-    url(r'^signup/signup1$',views.signup1,name='signup1'),
+    # url(r'^signup/$',views.signup,name='signup'),
+    # url(r'^signup/signup1$',views.signup1,name='signup1'),
     url(r'^login/$',views.login,name='login'),
     url(r'^login/loginnet$',views.loginnet,name='loginnet'),
     #leavestatus
@@ -42,4 +42,6 @@ urlpatterns = [
     
     url(r'^home/$',views.home,name='home'),
     url(r'^logout/$',views.logout,name='logout'),
+
+    url(r'^signup/$',views.UserFormView.as_view(),name='signup'),
 ]
