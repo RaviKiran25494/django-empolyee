@@ -84,7 +84,7 @@
 
 {% block body %}
  <center><h1>WELCOME TO DIGITAL-LYNC</h1></center></div>
-<!-- <div class="container-fluid">
+<div class="container-fluid">
   
   <div class="row">
     <div class="col-sm-3" style="background-color:lavender;"></div>
@@ -93,13 +93,17 @@
 
     <center><h1>login</h1></center></div>
     
-    <center><button><a class="btn btn-success" href='/empolyee/login'>EMPOLYEE-LOGIN</a></button></center><br><br>
+    <center><form class="form-inline my-2 my-lg-0">
+                {% csrf_token %}
+                <button><a style="color:white" href="#" class="btn btn-success" role="button" data-toggle="modal"
+                   data-target="#login-modal">Employee-Login</a><button>
+            </form></center><br><br>
     <center><button><a class="btn btn-success" href='/empolyee/logina'>&nbsp;&nbsp;&nbsp;ADMIN-LOGIN&nbsp;&nbsp;&nbsp;</a></button></center>
 <br><br>
  </div>
    <div class="col-sm-3" style="background-color:lavender;"></div>
    </div>
-</div> -->
+</div>
 {% endblock %}
 
 </div>
