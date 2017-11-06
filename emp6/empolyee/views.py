@@ -14,9 +14,6 @@ from django.views.generic import View
 
 from.models import Registers,Employees,Leaves,Payments,Users,Admins
 
-
-# def index(request):
-# 	return render(request,'empolyee/index11.html')
 def index(request):
 	registers=Registers.objects.all()
 	context={
@@ -25,7 +22,6 @@ def index(request):
 	return render(request,'empolyee/index.html',context)
 def home(request):
 	return render(request,'empolyee/home.html')
-
 
 def detail(request,register_id):
 	try:
@@ -125,13 +121,6 @@ def leave1(request):
 	leaves = Leaves(em_id =request.POST['empid'],em_name =request.POST['name'],department =request.POST['department'],leave_from=request.POST['leavefrom'],leave_to=request.POST['leaveto'],no_days=request.POST['numberofdays'],reason=request.POST['reason'])
 	leaves.save()
 	return render(request,'empolyee/index.html')
-# def leavestatus(request):
-# 	leaves = Leaves.objects.all()
-# 	context={
-# 	'leaves':leaves,
-# 	} 
-# 	print(leaves.em_name)
-# 	return render(request,'empolyee/leavestatus.html',context)
 def leavestatus(request):
 	employees = Leaves.objects.all()
 	context={
@@ -165,6 +154,8 @@ def logina1(request):
 			if(a==request.POST['username'] and b==request.POST['password']):
 				print("hiiiii")
 				return render(request,'empolyee/home1.html',{"users":users})
+	else:
+		return render(request,'empolyee/loginA.html')
 #------------------------------------------------------------------------------
 def loginnet(request):
     if request.method != 'POST':
@@ -223,13 +214,6 @@ def leaveapprioved(request):
 	context={
 	'leaves':leaves,
 	}
-	# for leaves in leaves:
-	# 	if leaves.status=="none":
-	# 		a=leaves.em_id
-	# 		context1={
-	# 		"a":a
-	# 		}
-			# print(leaves,a)
 	return render(request,'empolyee/leave1.html',context)
 #apprioved1
 
@@ -255,8 +239,6 @@ def forgot1(request):
 	for registers in registers:
 		if (b==registers.em_father_mother_name and a==registers.em_dob and c==registers.em_email):
 			f=registers.em_name
-			print(f)
-			# users = Users.objects.get(id=)
 		else:
 			print("fail")
 	print(c,d,a,b)
@@ -275,14 +257,6 @@ def next(request):
 	if(0==0):
 		print("fullif")
 		return render(request,'empolyee/index11.html',context)
-  	# elif(person['Type']=="PARTTIME"):
-   #  	print("partif")
-   #  	return render(request,'empolyee/index11.html',context)
-  	# else:
-   #  	return render(request,'empolyee/index11.html',context
-   	# employee = Empolyees(name =request.POST['name'],dob =request.POST['dob'],address=request.POST['em_dob'],mobile=request.POST['em_address'],email=request.POST['em_aadher_number'],alternate_no=request.POST['em_mobile'],date_join=request.POST['em_email'],post=request.POST['em_alternate_no'],type1=request.POST['em_type'],dep=request.POST['em_type'],remarks=request.POST['em_type'])
- #    employee.save()	
-
 def login123(request):
    if request.method == 'POST':
        username = request.POST['u']
