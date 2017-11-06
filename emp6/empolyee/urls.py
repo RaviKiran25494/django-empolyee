@@ -3,6 +3,7 @@ from.import views
 
 urlpatterns = [
     url(r'^$', views.index ,name="index"),
+    url(r'^12$', views.homeA ,name="homeA"),
     url(r'^(?P<register_id>[0-9]+)/$', views.detail,name='detail'),
     url(r'^next/(?P<id>\d+)$', views.next, name='next'),
 

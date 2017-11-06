@@ -22,6 +22,8 @@ def index(request):
 	return render(request,'empolyee/index.html',context)
 def home(request):
 	return render(request,'empolyee/home.html')
+def homeA(request):
+	return render(request,'empolyee/homeA.html')
 
 def detail(request,register_id):
 	try:
